@@ -120,7 +120,7 @@ type Server(publishDiagnostics) =
                 range = symbol.range
             }
             tryPacking p.textDocument.uri hoverLoc symbol packHover None 
-            
+
         member this.FindReferences(p: ReferenceParams): list<Location> =
             let packPositions (refLoc: Location) (s: Symbol) (tcContext: TypeCheckContext): list<Location> = 
                 match findQName p.textDocument.uri.AbsolutePath refLoc s.identifier tcContext.ncEnv with
@@ -165,5 +165,8 @@ let main _ =
     let publishDiagnosticsMethod (u: Uri, p: Diagnostic[]) =
         {PublishDiagnosticsParams.uri = u; diagnostics = p} |> serializeDiagnostics |> writeClient writer
     let server = Server(publishDiagnosticsMethod) :> ILanguageServer
-    LanguageServer.connect server reader writer
+    try
+        LanguageServer.connect server reader writer
+    with e ->
+        eprintfn "Exception in language server %s\n%s" e.Message e.StackTrace
     0
