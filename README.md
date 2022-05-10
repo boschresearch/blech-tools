@@ -4,7 +4,7 @@
 
 [![Project Status: Moved to http://github.com/blech-lang/blech-tools – The project has been moved to a new location, and the version at that location should be considered authoritative.](https://www.repostatus.org/badges/latest/moved.svg)](https://www.repostatus.org/#moved) to [development.blech-lang.org](http://development.blech-lang.org/blech-tools)
 
-This repository comprises tools in the context of the Blech language and compiler (See: https://boschresearch.github.io/blech-doc)
+This repository comprises tools in the context of the Blech language and compiler.
 Currently, the following tools are available:
 * `ide/` - Integrated Development Environment plugin
 
